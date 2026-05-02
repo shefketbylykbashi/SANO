@@ -102,7 +102,7 @@ def fig_architecture(out_path: str) -> None:
                                      arrowstyle="->", mutation_scale=12,
                                      connectionstyle="arc3,rad=0.15"))
     fig.tight_layout()
-    fig.savefig(out_path, bbox_inches="tight"); plt.close(fig)
+    fig.savefig(out_path, bbox_inches="tight", dpi=300); plt.close(fig)
 
 
 # ---------------------------------------------------------------------------
@@ -132,7 +132,7 @@ def fig_latency_cdf(samples_csv: str, out_path: str) -> None:
     ax.grid(True, which="both", ls=":", alpha=0.5)
     ax.axhline(0.99, ls="--", color="#888", lw=0.7)
     ax.legend(loc="lower right", frameon=False)
-    fig.tight_layout(); fig.savefig(out_path, bbox_inches="tight")
+    fig.tight_layout(); fig.savefig(out_path, bbox_inches="tight", dpi=300)
     plt.close(fig)
 
 
@@ -163,7 +163,7 @@ def fig_reaction_time(samples_csv: str, out_path: str) -> None:
     ax.set_xlim(0, 60); ax.set_ylim(0, 2400)
     ax.grid(True, ls=":", alpha=0.5)
     ax.legend(loc="lower right", frameon=False, ncol=2)
-    fig.tight_layout(); fig.savefig(out_path, bbox_inches="tight")
+    fig.tight_layout(); fig.savefig(out_path, bbox_inches="tight", dpi=300)
     plt.close(fig)
 
 
@@ -192,7 +192,7 @@ def fig_autonomy(samples_csv: str, out_path: str) -> None:
     ax.set_ylim(-5, 108)
     ax.grid(True, ls=":", alpha=0.5)
     ax.legend(loc="center right", frameon=False, fontsize=7)
-    fig.tight_layout(); fig.savefig(out_path, bbox_inches="tight")
+    fig.tight_layout(); fig.savefig(out_path, bbox_inches="tight", dpi=300)
     plt.close(fig)
 
 
@@ -200,7 +200,7 @@ def fig_autonomy(samples_csv: str, out_path: str) -> None:
 def make_all(results_dir: str, out_dir: str) -> None:
     _ensure_outdir(out_dir)
     samples = os.path.join(results_dir, "latency_samples.csv")
-    fig_architecture(os.path.join(out_dir, "architecture.pdf"))
-    fig_latency_cdf(samples, os.path.join(out_dir, "latency_cdf.pdf"))
-    fig_reaction_time(samples, os.path.join(out_dir, "reaction_time.pdf"))
-    fig_autonomy(samples, os.path.join(out_dir, "autonomy.pdf"))
+    fig_architecture(os.path.join(out_dir, "architecture.png"))
+    fig_latency_cdf(samples, os.path.join(out_dir, "latency_cdf.png"))
+    fig_reaction_time(samples, os.path.join(out_dir, "reaction_time.png"))
+    fig_autonomy(samples, os.path.join(out_dir, "autonomy.png"))
